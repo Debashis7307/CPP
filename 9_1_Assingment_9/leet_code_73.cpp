@@ -4,6 +4,7 @@ using namespace std;
 
 void setZeroes(vector<vector<int> >& matrix) {
         int m = matrix.size();
+        
         int n = matrix[0].size();
          vector<int> row(m,0);
          vector<int> col(n,0);
