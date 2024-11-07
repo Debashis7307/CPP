@@ -34,8 +34,8 @@ public:
 
 int main() {
     Solution solution;
-    string s = "egg";
-    string t = "add";
+    string s = "eggless";
+    string t = "addoazz";
     
     bool result = solution.isIsomorphic(s, t);
     cout << (result ? "True" : "False") << endl;
