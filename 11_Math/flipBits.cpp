@@ -20,12 +20,15 @@
 //     cout << "Flipped bits: " << flipBits(n) << endl;
 //     return 0;
 // }
-
 #include <iostream>
+#include <bitset>
 using namespace std;
 
+string decimalToBinary(int n) {
+    return bitset<8>(n).to_string();
+}
+
 int flipBits(int n) {
-    // XOR the number with the bitwise NOT of 0 to flip all bits
     return ~n;
 }
 
@@ -33,6 +36,14 @@ int main() {
     int n;
     cout << "Enter the number: ";
     cin >> n;
-    cout << "Flipped bits: " << flipBits(n) << endl;
+
+    string originalBinary = decimalToBinary(n);
+    int flippedNumber = flipBits(n);
+    string flippedBinary = decimalToBinary(flippedNumber);
+
+    cout << "Original binary: " << originalBinary << endl;
+    cout << "Flipped binary: " << flippedBinary << endl;
+    cout << "Flipped number: " << flippedNumber << endl;
+
     return 0;
 }
