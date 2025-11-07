@@ -1,4 +1,5 @@
 #include<iostream>
+#include<queue>
 using namespace std;
 class TreeNode{
 public:
@@ -31,10 +32,37 @@ void PostOrder(TreeNode* root){
 }
 void LevelWise(TreeNode* root,int curr,int level){
   if(root==NULL) return;
-  if(curr==level) cout<<root->data<<" ";
+  if(curr==level){
+    cout<<root->data<<" ";
+    return;
+  }
   LevelWise(root->left,curr+1,level);
   LevelWise(root->right,curr+1,level);
 }
+int TreeLevel(TreeNode* root){
+  if(root==NULL) return 0;
+  return 1 + max(TreeLevel(root->left), TreeLevel(root->right));
+}
+void LevelOrder(TreeNode* root){
+  int n=TreeLevel(root);
+  for(int i=1;i<=n;i++){
+    LevelWise(root,1,i);
+    cout<<endl;
+  }
+}
+
+void BFS(TreeNode* root){
+  queue<TreeNode*> q;
+  q.push(root);
+  while(!q.empty()){
+    TreeNode* temp=q.front();
+    q.pop();
+    cout<<temp->data<<" ";
+    if(temp->left) q.push(temp->left);
+    if(temp->right) q.push(temp->right);
+  }
+}
+
 int main(){
   TreeNode* root=new TreeNode(10);
   TreeNode* a=new TreeNode(20);
@@ -58,8 +86,12 @@ int main(){
   // cout<<"PostOrder: ";
   // PostOrder(root);
 
-  int level;
-  cin>>level;
-  LevelWise(root,1,level);
+  // int level;
+  // cin>>level;
+  // LevelWise(root,1,level);
+  BFS(root);
+  cout<<endl;
+  cout<<"Level Order: "<<endl;
+  LevelOrder(root);
   return 0;
 }
