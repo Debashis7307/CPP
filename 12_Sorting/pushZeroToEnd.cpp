@@ -1,4 +1,4 @@
-#include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
 
 int main(){
@@ -21,5 +21,7 @@ int main(){
     cout << arr[i] << " ";
   }
   cout << endl;
+  double no=7.3297;
+  cout<<fixed<<setprecision(2)<<no;
   return 0;
 }
